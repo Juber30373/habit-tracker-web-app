@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habit Tracker</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">✓</div><div><h1>HabitFlow</h1><p>Daily habit tracker</p></div></div>
+  <div class="nav">
+    <button class="active" data-page="dashboard">⌂ &nbsp; Dashboard</button>
+    <button data-page="habits">☷ &nbsp; My Habits</button>
+    <button data-page="progress">◒ &nbsp; Progress</button>
+  </div>
+  <div class="tip"><b>Small steps matter.</b><br><br>Stay consistent and build better routines one day at a time.</div>
+</aside>
+
+<main class="main">
+  <div class="top">
+    <div><p class="date" id="todayDate"></p><h2 id="title">Today's habits</h2></div>
+    <button class="primary" id="addTop">+ Add Habit</button>
+  </div>
+
+  <section id="dashboard" class="page active">
+    <div class="hero">
+      <div><small>TODAY'S PROGRESS</small><h3 id="heroPercent">0% complete</h3><p id="heroMessage">Add a habit to get started.</p></div>
+      <div class="ring" id="ring"><span id="ringText">0%</span></div>
+    </div>
+    <div class="stats">
+      <div class="card stat"><span>Habits</span><strong id="total">0</strong><small>Total habits</small></div>
+      <div class="card stat"><span>Completed</span><strong id="completed">0</strong><small>Today</small></div>
+      <div class="card stat"><span>Best streak</span><strong id="best">0</strong><small>Days</small></div>
+      <div class="card stat"><span>Completion</span><strong id="rate">0%</strong><small>All-time</small></div>
+    </div>
+    <div class="grid">
+      <div class="card panel"><div class="panel-head"><div><h3>Today's habits</h3><p>Check off habits as you complete them.</p></div><button class="link" data-page="habits">Manage</button></div><div id="todayList" class="habits"></div></div>
+      <div class="card panel"><div class="panel-head"><div><h3>Last 7 days</h3><p>Your daily completion rate.</p></div></div><div id="weekChart" class="chart"></div></div>
+    </div>
+  </section>
+
+  <section id="habits" class="page">
+    <div class="heading"><div><h2>My Habits</h2><p>Create, edit, and remove your daily habits.</p></div><button class="primary" id="addMain">+ Add Habit</button></div>
+    <div id="habitGrid" class="habit-grid"></div>
+  </section>
+
+  <section id="progress" class="page">
+    <div class="heading"><div><h2>Progress</h2><p>See how consistently you complete your habits.</p></div></div>
+    <div class="card panel"><div class="panel-head"><div><h3>Last 14 days</h3><p>Daily completion rate.</p></div></div><div id="progressChart" class="chart large-chart"></div></div>
+    <div class="grid performance"><div class="card panel"><h3>Habit performance</h3><div id="performance"></div></div><div class="card panel"><h3>Tips</h3><p>• Start with a few realistic habits.</p><p>• Use streaks as motivation.</p><p>• Review your progress weekly.</p></div></div>
+  </section>
+</main>
+</div>
+
+<div class="modal hidden" id="modal">
+<div class="modal-box">
+<button class="close" id="close">×</button>
+<h3 id="modalTitle">Add a habit</h3><p>Create a simple daily habit.</p>
+<form id="form">
+<input type="hidden" id="editId">
+<label>Habit name<input id="name" maxlength="40" required placeholder="e.g. Study DSA"></label>
+<label>Category<select id="category"><option>Study</option><option>Health</option><option>Fitness</option><option>Personal</option><option>Other</option></select></label>
+<label>Daily goal (minutes)<input id="goal" type="number" min="1" max="1440" value="30" required></label>
+<div class="form-actions"><button type="button" class="secondary" id="cancel">Cancel</button><button class="primary">Save Habit</button></div>
+</form>
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
